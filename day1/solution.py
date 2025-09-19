@@ -24,8 +24,8 @@ with open("testsPartOne.csv") as fileObject:
 
 
 #~~~~~~~~~~~~~~~~~~~SOLUTION PART ONE~~~~~~~~~~~~~~~~~~~
-import input_value
-answer = func(input_value.input)
+import inputValue
+answer = func(inputValue.input)
 print(f"The solution is {answer}")
 
 #~~~~~~~~~~~~~~~~~~~TESTS PART TWO~~~~~~~~~~~~~~~~~~~
@@ -37,4 +37,4 @@ with open("testsPartTwo.csv") as fileObject:
 
 #~~~~~~~~~~~~~~~~~~~SOLUTION PART TWO~~~~~~~~~~~~~~~~~~~
 
-print(func(input_value.input, True))
+print(func(inputValue.input, True))
