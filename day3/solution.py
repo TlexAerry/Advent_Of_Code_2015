@@ -3,7 +3,11 @@ class house:
         self.address = [x,y]
         self.presents = number_presents
 
-    #define the equality method using the address to identify previously visited houses
+    def __eq__(self, other):
+        if self.address == other.address:
+            return True
+        else:
+            return False
 
 class santa:
     def __init__(self):
