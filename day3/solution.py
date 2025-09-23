@@ -26,16 +26,10 @@ class santa:
                 i.receivePresent()  #give the existing house another present
                 self.presents_given += 1
                 return
-            else: # and if we haven't visited this house before
-                self.visited_houses.append(newHouse) # add it to the list of houses we've now visited
-                self.presents_given += 1 
-                
-                return
-# The issue here is that the for loop in my visit house method is getting called everytime
-# something is tested. So if it's 0,0 then it will always increment the number of presents
-# that have been given as that's the first house. But when santa moves to 0,1 and it's te-
-# sted, then it fails the first if statement, so will create a new house regardless at the
-# address   
+        self.visited_houses.append(newHouse) #or.... add it to the list of houses we've now visited
+        self.presents_given += 1                 
+        return
+
 
     def move(self, direction): #method for moving around the grid by input      
         if direction == "<":
@@ -54,9 +48,6 @@ def solFunction(directions):
     func_santa = santa()
     for i in directions:
         func_santa.move(i)
-
-    for i in func_santa.visited_houses:
-        print(i.address,i.presents)
     return len(func_santa.visited_houses)
 
 #~~~~~~~~~~~~~~~~~~~TESTS PART ONE~~~~~~~~~~~~~~~~~~~~
@@ -64,7 +55,11 @@ def solFunction(directions):
 with open("testsPartOne.csv") as fileObject:
     file = csv.reader(fileObject)
     for key in file:
-        print(solFunction(key[0]))
+        print(solFunction(key[0]),key[1],int(solFunction(key[0])) == int(key[1]))
 
 
 #~~~~~~~~~~~~~~~~~~~SOLUTION PART ONE~~~~~~~~~~~~~~~~~~~
+
+from inputValue import *
+
+print(f"the answer to part 1 is {solFunction(input_string)}")
