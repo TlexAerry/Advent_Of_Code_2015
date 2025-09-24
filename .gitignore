@@ -1,4 +1,4 @@
 test.py
 main.sh
-.gitignore
 */test*
+*pycache*
