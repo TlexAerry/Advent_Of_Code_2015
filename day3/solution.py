@@ -55,21 +55,24 @@ def solFunction1(directions):
 def solFunction2(directions):
     directions1 = ""
     directions2 = ""
+    
     for i in range(0,len(directions)):
         if i % 2 == 1:
-            directions1 = directions1 + input_string[i]
+            directions1 = directions1 + directions[i]
         else:  
-            directions2 = directions2 + input_string[i] 
+            directions2 = directions2 + directions[i] 
 
-    print(f"~~~~~~~~~~\n{directions}\n{directions1}\n{directions2}\n ~~~~~~~~~~")
-    # func_santa1 = santa()
-    # func_santa2 = santa()
-    # for i in directions1:
-    #     func_santa1.move(i)
-    # for i in directions2:
-    #     func_santa2.move(i)
-    # total_houses = func_santa1.visited_houses + func_santa2.visited_houses
-    # all_addresses = []
+    func_santa1 = santa()
+    func_santa2 = santa()
+    for i in directions1:
+        func_santa1.move(i)
+    for i in directions2:
+        func_santa2.move(i)
+    
+    total_houses = func_santa1.visited_houses + func_santa2.visited_houses
+    total_addresses = [i.address for i in total_houses]
+    unique_addresses = set(tuple(i) for i in total_addresses)
+    return(len(unique_addresses))
 
 
 #~~~~~~~~~~~~~~~~~~~TESTS PART ONE~~~~~~~~~~~~~~~~~~~~
@@ -88,12 +91,12 @@ print(f"the answer to part 1 is {solFunction1(input_string)}")
 
 #~~~~~~~~~~~~~~~~~~~TESTS PART TWO~~~~~~~~~~~~~~~~~~~~
 
-with open("testsPartTwo.csv") as fileObject:
-    file = csv.reader(fileObject)
-    for key in file:
-        print(solFunction2(key[0]))
+# with open("testsPartTwo.csv") as fileObject:
+#     file = csv.reader(fileObject)
+#     for key in file:
+#         print(solFunction2(key[0]) == int(key[1]))
 
 
 #~~~~~~~~~~~~~~~~~~~SOLUTION PART TWO~~~~~~~~~~~~~~~~~~~
 
-#print(f"the answer to part 2 is {solFunction2(input_string)}")
+print(f"the answer to part 2 is {solFunction2(input_string)}")
